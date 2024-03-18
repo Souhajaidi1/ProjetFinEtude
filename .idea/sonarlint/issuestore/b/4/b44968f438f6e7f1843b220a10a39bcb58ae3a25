@@ -1,0 +1,7 @@
+
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¼Š¥Æýÿÿÿÿ
+h
+java:S2259"FA "NullPointerException" could be thrown; "convert()" can return null.(ØÎºÊøÿÿÿÿ8«Ãæöã1
+j
+java:S1612)"HReplace this lambda with method reference 'SimpleGrantedAuthority::new'.(ðß´Ãùÿÿÿÿ8­˜¾öã1
+]	java:S125."<This block of commented-out lines of code should be removed.(ÒÌâ–øÿÿÿÿ8Â›ºöã1

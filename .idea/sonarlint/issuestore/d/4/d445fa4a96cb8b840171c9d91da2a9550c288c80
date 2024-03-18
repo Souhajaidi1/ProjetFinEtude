@@ -1,0 +1,19 @@
+
+w
+java:S1104"UMake firstname a static final constant or non-public and provide accessors if needed.(Ú³Šûùÿÿÿÿ8Ë¬çßã1
+v
+java:S1104"TMake lastname a static final constant or non-public and provide accessors if needed.(ÔØÙÒÿÿÿÿÿ8Ë¬çßã1
+s
+java:S1104"QMake email a static final constant or non-public and provide accessors if needed.(¾Æ†Ëıÿÿÿÿ8Ì¬çßã1
+w
+java:S1104"UMake telephone a static final constant or non-public and provide accessors if needed.(Í×ƒ‘ùÿÿÿÿ8Ì¬çßã1
+t
+java:S1104"WMake nationalite a static final constant or non-public and provide accessors if needed.(¯ò»â8Ì¬çßã1
+{
+java:S1104"YMake datenaissance a static final constant or non-public and provide accessors if needed.(Ïàé‘ıÿÿÿÿ8Ì¬çßã1
+{
+java:S1104"YMake lieunaissance a static final constant or non-public and provide accessors if needed.(÷ Ù¡üÿÿÿÿ8Ì¬çßã1
+p
+java:S1104"SMake Adresse a static final constant or non-public and provide accessors if needed.(³ßÕ‘8¿¨èßã1
+s	java:S116"RRename this field "id_user" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‹ä•úÿÿÿÿ8Í¬çßã1
+n	java:S116"RRename this field "Adresse" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(³ßÕ‘8Á¨èßã1
