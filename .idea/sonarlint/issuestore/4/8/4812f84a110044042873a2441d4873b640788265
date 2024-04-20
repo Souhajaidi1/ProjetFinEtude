@@ -1,4 +1,4 @@
 
-t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¼Š¥Æýÿÿÿÿ
+{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¼Š¥Æýÿÿÿÿ8Î÷Û®ï1
 T
-java:S1611 "7Remove the parentheses around the "authorize" parameter(–²ÇÁ8„«²öã1
+java:S1611!"7Remove the parentheses around the "authorize" parameter(–²ÇÁ8å÷Û®ï1

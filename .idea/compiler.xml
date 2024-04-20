@@ -7,7 +7,9 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="EvaluationMs" />
         <module name="UserMs" />
+        <module name="ApplicationMS" />
         <module name="EurekaServer2" />
         <module name="API_Gateway" />
         <module name="OfferMS" />
@@ -15,7 +17,9 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="API_Gateway" target="1.8" />
+      <module name="ApplicationMS" target="17" />
       <module name="EurekaServer2" target="1.8" />
+      <module name="EvaluationMs" target="17" />
       <module name="gestionUser" target="17" />
       <module name="OfferMS" target="17" />
       <module name="UseMS" target="17" />
@@ -26,7 +30,9 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="API_Gateway" options="-parameters" />
+      <module name="ApplicationMS" options="-parameters" />
       <module name="EurekaServer2" options="-parameters" />
+      <module name="EvaluationMs" options="-parameters" />
       <module name="OfferMS" options="-parameters" />
       <module name="UseMS" options="-parameters" />
       <module name="UserMS" options="-parameters" />

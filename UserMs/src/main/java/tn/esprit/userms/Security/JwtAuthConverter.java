@@ -11,13 +11,14 @@ import org.springframework.stereotype.Component;
 
 import java.lang.annotation.Annotation;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @Component
-public  class JwtAuthConverter implements Converter<Jwt,AbstractAuthenticationToken> {
+public  class  JwtAuthConverter implements Converter<Jwt,AbstractAuthenticationToken> {
     private final JwtGrantedAuthoritiesConverter jwtGrantedAuthoritiesConverter=new JwtGrantedAuthoritiesConverter();
 
 
@@ -31,15 +32,20 @@ public  class JwtAuthConverter implements Converter<Jwt,AbstractAuthenticationTo
     }
 
     private Collection<GrantedAuthority> extractResourceRoles(Jwt jwt) {
-        Map<String , Object> realmAccess;
-        Collection<String> roles;
-        if(jwt.getClaim("realm_access")==null){
-            return Set.of();
-        }
-        realmAccess = jwt.getClaim("realm_access");
-        roles = (Collection<String>) realmAccess.get("roles");
-        return roles.stream().map(role->new SimpleGrantedAuthority(role)).collect(Collectors.toSet());
+        Map<String, Object> realmAccess = jwt.getClaimAsMap("realm_access");
+        Collection<String> realmRoles = (Collection<String>) realmAccess.getOrDefault("roles", Collections.emptyList());
+
+        Map<String, Object> resourceAccess = jwt.getClaimAsMap("resource_access");
+        // Cast resourceAccess to Map first:
+        Map<String, Object> resourceAccessMap = (Map<String, Object>) resourceAccess.getOrDefault("SpringBoot-Client", Collections.emptyMap());
+        Collection<String> resourceRoles = (Collection<String>) resourceAccessMap.getOrDefault("roles", Collections.emptyList());
+
+        return Stream.concat(realmRoles.stream(), resourceRoles.stream())
+                .map(role -> new SimpleGrantedAuthority(role))
+                .collect(Collectors.toSet());
     }
+
+
 }
 /*
 JWT :

@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/API_Gateway/API_Gateway.iml" filepath="$PROJECT_DIR$/API_Gateway/API_Gateway.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ApplicationMS/ApplicationMS.iml" filepath="$PROJECT_DIR$/ApplicationMS/ApplicationMS.iml" />
       <module fileurl="file://$PROJECT_DIR$/EurekaServer/EurekaServer2.iml" filepath="$PROJECT_DIR$/EurekaServer/EurekaServer2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/EvaluationMs/EvaluationMs.iml" filepath="$PROJECT_DIR$/EvaluationMs/EvaluationMs.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/MyWork.iml" filepath="$PROJECT_DIR$/.idea/MyWork.iml" />
       <module fileurl="file://$PROJECT_DIR$/OfferMS/OfferMS.iml" filepath="$PROJECT_DIR$/OfferMS/OfferMS.iml" />
       <module fileurl="file://$PROJECT_DIR$/UserMs/UserMs.iml" filepath="$PROJECT_DIR$/UserMs/UserMs.iml" />

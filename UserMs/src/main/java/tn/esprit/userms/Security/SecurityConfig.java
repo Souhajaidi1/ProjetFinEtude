@@ -27,16 +27,18 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
-        return http.cors(Customizer.withDefaults())
+                http
+                .cors(Customizer.withDefaults())
                 .csrf(Customizer.withDefaults())
                 .authorizeHttpRequests((authorize) -> authorize
-                        .requestMatchers("/","/customOauth2login/**", "/css/**", "/js/**", "/images/**", "/webjars/**","/h2-console/**").permitAll()
+                        .requestMatchers("api/hello_2").hasAuthority("realm-admin")
+                        .requestMatchers("api/user").hasAuthority("realm-user")
                         .anyRequest().authenticated())
-                .headers(h->h.frameOptions(fo->fo.disable()))
+               // . headers(h->h.frameOptions(fo->fo.disable()))
                 .csrf(csrf->csrf.ignoringRequestMatchers("/h2-console/**"))
-                .oauth2ResourceServer(ors->ors.jwt(jwt->jwt.jwtAuthenticationConverter(jwtAuthConverter)))
-                .sessionManagement(sm->sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .build();
+                .oauth2ResourceServer(ors -> ors.jwt(jwt -> jwt.jwtAuthenticationConverter(jwtAuthConverter)))
+                .sessionManagement(sm->sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
+               return http.build();
     }
 
     @Bean

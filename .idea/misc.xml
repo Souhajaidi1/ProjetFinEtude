@@ -9,6 +9,8 @@
         <option value="$PROJECT_DIR$/UserMS/pom.xml" />
         <option value="$PROJECT_DIR$/OfferMS/pom.xml" />
         <option value="$PROJECT_DIR$/UserMs/pom.xml" />
+        <option value="$PROJECT_DIR$/ApplicationMS/pom.xml" />
+        <option value="$PROJECT_DIR$/EvaluationMs/pom.xml" />
       </list>
     </option>
   </component>

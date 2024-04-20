@@ -1,0 +1,11 @@
+
+c
+java:S1104"NMake CV a static final constant or non-public and provide accessors if needed.(›³
+w
+java:S1104"\Make lettreMotivation a static final constant or non-public and provide accessors if needed.(øÇ³Ğùÿÿÿÿ
+g
+java:S1104"QMake score a static final constant or non-public and provide accessors if needed.(«ÊÉ˜
+v
+java:S1104"[Make dateApplication a static final constant or non-public and provide accessors if needed.(¡®Ûˆøÿÿÿÿ
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¢Ï¼õúÿÿÿÿ
+a	java:S116"MRename this field "CV" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(›³
