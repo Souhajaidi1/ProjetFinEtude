@@ -7,12 +7,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/user")
 public class UserController {
 
-    @GetMapping("/user")
+    @GetMapping("/client")
    // @PreAuthorize("hasRole('realm-user')")
-    public String hello(){ return "Hello from Spring";}
+    public String hello(){ return "Hello from spring";}
 
     @GetMapping("/hello_2")
    // @PreAuthorize("hasRole('realm-admin')")
