@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
+import { OfferManagementComponent } from './recruit-offers/offer-management/offer-management.component';
+import { AddOfferFormComponent } from './recruit-offers/add-offer-form/add-offer-form.component';
 const routes: Routes = [
   {
     path: '',

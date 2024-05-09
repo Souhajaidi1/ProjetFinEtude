@@ -40,7 +40,8 @@ import {
   FileService, GroupsService, AuthenticationService, CoreDataService, MailService, SortService
 } from './services/shared';
 import { NumberFormatter } from './helpers';
-
+import { ListCandidatesComponent } from './components/recruitment/recruit-candidates/list-candidates/list-candidates.component';
+import { DefaultComponent } from './components/dashboard/default/default.component';
 
 export const CUSTOM_DT_FORMATS = {
   parse: {
@@ -60,7 +61,8 @@ export const CUSTOM_DT_FORMATS = {
     AdminComponent,
     AuthComponent,
     BreadcrumbsComponent,
-    ExpirationSessionComponent
+    ExpirationSessionComponent,
+    ListCandidatesComponent
   ],
   imports: [
     CommonModule,
