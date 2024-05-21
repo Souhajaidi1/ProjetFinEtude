@@ -41,7 +41,8 @@
               "node_modules/datatables.net-bs/js/dataTables.bootstrap.js",
               "node_modules/datatables.net-responsive/js/dataTables.responsive.js",
               "node_modules/bootstrap-notify/bootstrap-notify.js",
-              "node_modules/ion-rangeslider/js/ion.rangeSlider.min.js"
+              "node_modules/ion-rangeslider/js/ion.rangeSlider.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
             ],
             "aot": true,
             "vendorChunk": true,

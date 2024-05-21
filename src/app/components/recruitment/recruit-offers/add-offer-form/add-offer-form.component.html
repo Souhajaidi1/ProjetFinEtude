@@ -1,6 +1,6 @@
 <div class="add-offer-form">
   <h2>Add Offer</h2>
-  <form [formGroup]="offerForm" (ngSubmit)="ngOnInit()">
+  <form [formGroup]="offerForm" >
     <div class="form-group">
       <label for="position">Position:</label>
       <input type="text" id="position" formControlName="position" required>
@@ -54,7 +54,8 @@
         <option value="moreThan5Year">More than 5 years</option>
       </select>
     </div>
-    <button type="submit">Create Offer</button>
+    <button  (click)="onSubmit()">Create Offer</button>
   </form>
 </div>
+
 

@@ -42,6 +42,7 @@ import {
 import { NumberFormatter } from './helpers';
 import { ListCandidatesComponent } from './components/recruitment/recruit-candidates/list-candidates/list-candidates.component';
 import { DefaultComponent } from './components/dashboard/default/default.component';
+import { AddOfferFormComponent } from './components/recruitment/recruit-offers/add-offer-form/add-offer-form.component';
 
 export const CUSTOM_DT_FORMATS = {
   parse: {
@@ -86,7 +87,8 @@ export const CUSTOM_DT_FORMATS = {
     LockScreenModule,
     AuthModule,
     MatButtonModule,
-    BotDetectCaptchaModule
+    BotDetectCaptchaModule,
+    
   ],
   entryComponents: [
     AdminComponent,

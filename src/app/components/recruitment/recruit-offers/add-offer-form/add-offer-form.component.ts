@@ -7,9 +7,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class AddOfferFormComponent implements OnInit {
   offerForm: FormGroup;
-  constructor(private fb: FormBuilder) { }
-
-  ngOnInit() {
+  constructor(private fb: FormBuilder) {
     this.offerForm = this.fb.group({
       position: ['', Validators.required],
       type: ['', Validators.required],
@@ -20,6 +18,18 @@ export class AddOfferFormComponent implements OnInit {
       studyingLevel: [''],
       experience: ['', Validators.required],
     });
+   }
+
+  ngOnInit(): void {
+
+  }
+  onSubmit(): void {
+    if (this.offerForm.valid) {
+      console.log('Form Submitted', this.offerForm.value);
+      // Handle form submission, e.g., send the data to the server
+    } else {
+      console.log('Form is invalid');
+    }
   }
 
 }
