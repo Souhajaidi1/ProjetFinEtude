@@ -250,7 +250,7 @@ export class AdminComponent implements OnInit, OnDestroy {
   DialogExpirationSessionOpened = false;
   DialogLockScreenOpened = false;
   checkCurrentUserInterval: any;
-
+  offersClicked: boolean = false;
   scroll = (): void => {
     const scrollPosition = window.pageYOffset;
     if (scrollPosition > 56) {
@@ -301,6 +301,10 @@ export class AdminComponent implements OnInit, OnDestroy {
         this.changePassword();
       });
     }
+  }
+  
+  toggleOffers() {
+    this.offersClicked = !this.offersClicked;
   }
 
   ngOnDestroy() {

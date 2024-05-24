@@ -87,8 +87,9 @@ export const CUSTOM_DT_FORMATS = {
     LockScreenModule,
     AuthModule,
     MatButtonModule,
-    BotDetectCaptchaModule,
-    
+    BotDetectCaptchaModule
+
+
   ],
   entryComponents: [
     AdminComponent,

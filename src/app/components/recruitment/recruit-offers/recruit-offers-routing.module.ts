@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AddOfferFormComponent } from './add-offer-form/add-offer-form.component';
+import { OfferManagementComponent } from './offer-management/offer-management.component';
 
 const routes: Routes = [
   {
@@ -7,11 +9,11 @@ const routes: Routes = [
     children: [
       {
         path: 'add-offer',
-        loadChildren: () => import('./add-offer-form/add-offer-form.component').then(m => m.AddOfferFormComponent)
+        component:AddOfferFormComponent
       },
       {
         path: 'offer-management',
-        loadChildren: () => import('./offer-management/offer-management.component').then(m => m.OfferManagementComponent)
+        component:OfferManagementComponent
       }
     ]
   }

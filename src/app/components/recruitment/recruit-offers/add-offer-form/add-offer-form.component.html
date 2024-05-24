@@ -1,61 +1,92 @@
-<div class="add-offer-form">
-  <h2>Add Offer</h2>
-  <form [formGroup]="offerForm" >
-    <div class="form-group">
-      <label for="position">Position:</label>
-      <input type="text" id="position" formControlName="position" required>
-    </div>
-    <div class="form-group">
-      <label for="type">Type:</label>
-      <select id="type" formControlName="type" required>
-        <option value="">Select Type</option>
-        <option value="remote">Remote</option>
-        <option value="onsite">Onsite</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label for="contrat">Contrat:</label>
-      <select id="contrat" formControlName="contrat" required>
-        <option value="">Select Contrat</option>
-        <option value="internship">Internship</option>
-        <option value="cdi">CDI</option>
-        <option value="cdd">CDD</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label for="remuneration">Remuneration:</label>
-      <input type="number" id="remuneration" formControlName="remuneration" required>
-    </div>
-    <div class="form-group">
-      <label for="skills">Skills:</label>
-      <input type="text" id="skills" formControlName="skills" required>
-    </div>
-    <div class="form-group">
-      <label for="niceToHave">Nice To Have:</label>
-      <input type="text" id="niceToHave" formControlName="niceToHave">
-    </div>
-    <div class="form-group">
-      <label for="studyingLevel">Studying Level:</label>
-      <select id="studyingLevel" formControlName="studyingLevel">
-        <option value="">Select Level</option>
-        <option value="bac">Bac</option>
-        <option value="bac+2">Bac+2</option>
-        <option value="bac+3">Bac+3</option>
-        <option value="bac+5">Bac+5</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label for="experience">Experience:</label>
-      <select id="experience" formControlName="experience" required>
-        <option value="">Select Experience</option>
-        <option value="lessThan1Year">Less than 1 year</option>
-        <option value="1To2Year">1 to 2 years</option>
-        <option value="2To5Year">2 to 5 years</option>
-        <option value="moreThan5Year">More than 5 years</option>
-      </select>
-    </div>
-    <button  (click)="onSubmit()">Create Offer</button>
-  </form>
+<div class="row">
+  <div class="col-md-12">
+      <form  (ngSubmit)="addOffers()">
+          <h1>Offres/Add Offre</h1>
+<br>
+          <div class="row">
+              <!-- First Column -->
+              <div class="col-md-6" style="position: relative;">
+                  <fieldset>
+                      <legend><span class="number">1</span> Your Offer Info</legend>
+
+                      <div class="form-group">
+                          <label for="position">Position:</label>
+                          <input type="text" id="position" name="position" class="bottom-border" required [(ngModel)]="position">
+                      </div>
+
+                      <div class="form-group">
+                          <label for="type">Type:</label>
+                          <select id="type" name="type" required [(ngModel)]="type">
+                              <option value="">Select Type</option>
+                              <option value="remote">Remote</option>
+                              <option value="onsite">Onsite</option>
+                          </select>
+                      </div>
+
+                      <div class="form-group">
+                          <label for="contrat">Contrat:</label>
+                          <select id="contrat" name="contrat" required [(ngModel)]="contrat">
+                              <option value="">Select Contrat</option>
+                              <option value="internship">Internship</option>
+                              <option value="cdi">CDI</option>
+                              <option value="cdd">CDD</option>
+                          </select>
+                      </div>
+
+                      <div class="form-group">
+                          <label for="remuneration">Remuneration:</label>
+                          <input type="number" id="remuneration" name="remuneration" required [(ngModel)]="remuneration">
+                      </div>
+                  </fieldset>
+              </div>
+
+              <!-- Vertical Line -->
+              <div class="col-md-6" style="position: relative;">
+                  <div style="position: absolute; top: 0; bottom: 0; left: -1px; width: 1px; background-color: #ccc;"></div>
+                  <fieldset>
+                      <legend><span class="number">2</span> Your Skills and Experience</legend>
+
+                      <div class="form-group">
+                          <label for="skills">Skills:</label>
+                          <input type="text" id="skills" name="skills" required [(ngModel)]="skills">
+                      </div>
+
+                      <div class="form-group">
+                          <label for="niceToHave">Nice To Have:</label>
+                          <input type="text" id="niceToHave" name="niceToHave" [(ngModel)]="niceToHave">
+                      </div>
+
+                      <div class="form-group">
+                        <label for="formationExigees">formation Exigees:</label>
+                        <input type="text" id="formationExigees" name="formationExigees" [(ngModel)]="formationExigees">
+                    </div>
+
+                      <div class="form-group">
+                          <label for="studyingLevel">Studying Level:</label>
+                          <select id="studyingLevel" name="studyingLevel" [(ngModel)]="studyingLevel">
+                              <option value="">Select Level</option>
+                              <option value="bac">Bac</option>
+                              <option value="bac+2">Bac+2</option>
+                              <option value="bac+3">Bac+3</option>
+                              <option value="bac+5">Bac+5</option>
+                          </select>
+                      </div>
+
+                      <div class="form-group">
+                          <label for="experience">Experience:</label>
+                          <select id="experience" name="experience" required [(ngModel)]="experience">
+                              <option value="">Select Experience</option>
+                              <option value="lessThan1Year">Less than 1 year</option>
+                              <option value="1To2Year">1 to 2 years</option>
+                              <option value="2To5Year">2 to 5 years</option>
+                              <option value="moreThan5Year">More than 5 years</option>
+                          </select>
+                      </div>
+                  </fieldset>
+              </div>
+          </div>
+        <br/>
+          <button type="submit">Create Offer</button>
+      </form>
+  </div>
 </div>
-
-

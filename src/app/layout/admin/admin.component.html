@@ -182,12 +182,32 @@
                     </div>
                     <p>Dashboard</p>
                   </li>
-                  <li id="offers" class="button" routerLink="/recruitment/recruit-offers">
+
+
+                  <li id="offers" class="button"  (click)="toggleOffers()">
                     <div class="icon-container">
                       <mat-icon>local_offer</mat-icon>
                     </div>
-                    <p>Offers</p>
+                    <p>Offers             </p>
                   </li>
+
+
+
+                    <li  class="button" routerLink="/recruitment/recruit-offers/add-offer" *ngIf="offersClicked" >
+                      <div class="icon-container">
+                      </div>
+                      <p style="margin-left: 15%;">add Offers</p>
+                    </li>
+
+                  <li  class="button " routerLink="recruitment/recruit-offers/offer-management" *ngIf="offersClicked" >
+                    <div class="icon-container">
+                    </div>
+                    <p style="margin-left: 15%;">liste Offers</p>
+                  </li>
+
+
+
+
                   <li id="candidates" class="button" routerLink="/recruitment/recruit-candidates">
                     <div class="icon-container">
                       <mat-icon>people</mat-icon>

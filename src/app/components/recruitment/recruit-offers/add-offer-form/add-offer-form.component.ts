@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { RecruitOffersService } from 'app/services/recruitement/recruit-offers/recruit-offers.service';
 @Component({
   selector: 'app-add-offer-form',
   templateUrl: './add-offer-form.component.html',
@@ -7,7 +8,16 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class AddOfferFormComponent implements OnInit {
   offerForm: FormGroup;
-  constructor(private fb: FormBuilder) {
+  position!:any;
+  type!:any;
+  contrat!:any;
+  remuneration!:any;
+  niceToHave!:any;
+  skills!:any;
+  studyingLevel!:any;
+  experience!:any;
+  formationExigees!:any;
+  constructor(private fb: FormBuilder,private offerService:RecruitOffersService) {
     this.offerForm = this.fb.group({
       position: ['', Validators.required],
       type: ['', Validators.required],
@@ -31,5 +41,24 @@ export class AddOfferFormComponent implements OnInit {
       console.log('Form is invalid');
     }
   }
+  addOffers(){
+    let data={
+      position:this.position,
+      contrat:this.contrat,
+      remuneration:this.remuneration,
+      skills:this.skills,
+      nicetohave:this.niceToHave,
+      studyingLevel:this.studyingLevel,
+      experience:this.experience,
+      formationExigees:this.formationExigees,
+      TypeOffer:this.type,
+    }
+    console.log(data)
+    this.offerService.AddOffer(data).subscribe((res)=>{
+      console.log(res)
+    });
+}
+
+
 
 }

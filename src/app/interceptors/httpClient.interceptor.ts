@@ -27,13 +27,13 @@ export class HttpClientInterceptor implements HttpInterceptor {
                 let clonedheaders = request.headers.set('Authorization', 'Bearer ' + this.authenticationService.getProfile().access_token);
                 clonedheaders = clonedheaders.append('tt-usernumber', this.authenticationService.getProfile().currentUser.userNumber);
                 clonedrequest = request.clone({
-                    url: environment.apiUrl + request.url,
+                    url:  request.url,
                     headers: clonedheaders
                 });
             }
         } else {
             clonedrequest = request.clone({
-                url: environment.apiUrl + request.url
+                url: request.url
             });
         }
         return next.handle(clonedrequest);

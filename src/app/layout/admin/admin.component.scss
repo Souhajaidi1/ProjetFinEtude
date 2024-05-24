@@ -35,7 +35,6 @@
   cursor: pointer;
   display: flex;
 gap: 18px;
-  justify-content: center;
   align-items: center;
   width: 73%;
 }
@@ -50,6 +49,5 @@ li p
 {
   background-color: #3f629d;
   color: white;
-  border-radius: 25px;
-  padding: 1% 2%;
+  width: 100%;
 }

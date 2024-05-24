@@ -5,6 +5,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { environment } from 'environments/environment';
 import { CaptchaComponent } from 'angular-captcha';
 import { PasswordStrengthBarComponent } from 'app/shared/password-strength-bar/password-strength-bar.component';
+import { RecruitOffersService } from 'app/services/recruitement/recruit-offers/recruit-offers.service';
 
 @Component({
   selector: 'app-login',
@@ -24,6 +25,7 @@ export class LoginComponent implements OnInit {
 
   recaptchaSended = false;
   constructor(
+    private AuthService:RecruitOffersService,
     private route: ActivatedRoute,
     private router: Router,
     private authenticationService: AuthenticationService,
@@ -41,7 +43,9 @@ export class LoginComponent implements OnInit {
     this.authenticationService.logout();
 
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || 'dashboard';
-    this.captchaComponent.captchaEndpoint = environment.apiUrl + environment.captchaEndpointUrl;
+    //this.captchaComponent.captchaEndpoint = environment.apiUrl + environment.captchaEndpointUrl;
+    this.captchaComponent.captchaEndpoint =  environment.captchaEndpointUrl;
+
   }
 
   validateCaptcha(): void {
@@ -69,6 +73,15 @@ export class LoginComponent implements OnInit {
           this.failedLogin = false;
           this.failedCaptcha = true;
         });
+  }
+  Loginnn(loginForm:any){
+    let data={
+      grant_type:this.userLogin,
+      username:this.userPassword,
+    }
+     this.AuthService.Login(data).subscribe((res)=>{
+      console.log(res)
+    });
   }
 
   login() {

@@ -24,7 +24,9 @@ export class SendResetPasswordComponent implements OnInit {
 
   ngOnInit() {
     document.querySelector('body').setAttribute('themebg-pattern', 'theme1');
-    this.captchaComponent.captchaEndpoint = environment.apiUrl + environment.captchaEndpointUrl;
+    this.captchaComponent.captchaEndpoint = environment.captchaEndpointUrl;
+
+    // this.captchaComponent.captchaEndpoint = environment.apiUrl + environment.captchaEndpointUrl;
   }
 
   validateCaptcha(): void {
