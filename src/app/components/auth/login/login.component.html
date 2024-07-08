@@ -13,13 +13,12 @@
   <section class="login-block">
     <!-- Container-fluid starts -->
 
-
     <div class="container">
       <div class="row">
         <div class="col-sm-12">
           <!-- Authentication card start -->
           <form class="md-float-material form-material" name="form"
-            (ngSubmit)="Loginnn(loginForm)" #loginForm="ngForm" novalidate>
+            (ngSubmit)="login(loginForm)" #loginForm="ngForm" novalidate>
             <div class="text-center">
               <img src="assets/images/logo.png" alt="logo.png">
             </div>
@@ -30,6 +29,15 @@
                     <h3 class="text-center">Sign In</h3>
                   </div>
                 </div>
+                <div>
+                  <label for="username">Username:</label>
+                  <input type="text" id="username" [(ngModel)]="userLogin" name="username" required>
+                </div>
+                <div>
+                  <label for="password">Password:</label>
+                  <input type="password" id="password" [(ngModel)]="userPassword" name="password" required>
+                </div>
+                <!--
                 <div class="form-group form-primary">
                   <input type="text" name="usrNumber" [ngClass]="{'required': !(usrNumber.valid || usrNumber.pristine)}"
                     class="form-control login-input-style" [(ngModel)]="userLogin" #usrNumber="ngModel" required>
@@ -43,15 +51,14 @@
                   <span class="form-bar"></span>
                   <label class="float-label">Password</label>
                 </div>
+                -->
 
                 <botdetect-captcha captchaStyleName="angularBasicCaptcha"></botdetect-captcha>
-                <div id="tapa"
-                  style="background-color: #ffffff;height: 10px;width: 250px;position: relative;top: -10px;"></div>
+                <div id="tapa" style="background-color: #ffffff;height: 10px;width: 250px;position: relative;top: -10px;"></div>
                 <br>
                 <div title="hola" class="form-group form-primary">
                   <!-- captcha code: user-input textbox  -->
-                  <input id="userCaptchaInput" name="userCaptchaInput" ngModel #userCaptchaInput="ngModel"
-                    class="form-control">
+                  <input id="userCaptchaInput" name="userCaptchaInput" ngModel #userCaptchaInput="ngModel" class="form-control">
                   <span class="form-bar"></span>
                   <label class="float-label">Retype the characters from the picture:</label>
                 </div>
@@ -66,8 +73,7 @@
                 <div class="row m-t-30">
                   <div class="col-md-12">
                     <button type="submit" class="btn btn-primary btn-md btn-block waves-light text-center m-b-5 ripple"
-                      [disabled]="!loginForm.form.valid">Sign
-                      in</button>
+                      [disabled]="!loginForm.form.valid">Sign in</button>
                   </div>
                 </div>
                 <div class="col-md-12 text-center" style="font-weight:bold;font-size:smaller;">
@@ -96,6 +102,5 @@
       <!-- end of row -->
     </div>
     <!-- end of container-fluid -->
-
   </section>
 </div>

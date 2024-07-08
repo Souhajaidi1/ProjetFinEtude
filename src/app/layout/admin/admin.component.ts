@@ -302,7 +302,6 @@ export class AdminComponent implements OnInit, OnDestroy {
       });
     }
   }
-  
   toggleOffers() {
     this.offersClicked = !this.offersClicked;
   }

@@ -1,0 +1,24 @@
+<h1 mat-dialog-title>Select Interview Type</h1>
+
+<div mat-dialog-content>
+  <p>For date: {{ data.date | date }}</p>
+
+  <mat-radio-group class="radio-group" [(ngModel)]="selectedType">
+    <mat-radio-button class="radio-button" value="technical">
+      <mat-icon class="radio-icon">build</mat-icon>
+      <span>Technical Interview</span>
+    </mat-radio-button>
+    <mat-radio-button class="radio-button" value="hr">
+      <mat-icon class="radio-icon">person</mat-icon>
+      <span>HR Interview</span>
+    </mat-radio-button>
+  </mat-radio-group>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()" class="cancel-button">Cancel</button>
+  <button mat-button (click)="onSelect()" class="ok-button">OK</button>
+</div>
+
+
+

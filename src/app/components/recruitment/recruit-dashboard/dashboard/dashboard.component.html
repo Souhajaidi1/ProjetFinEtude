@@ -1,0 +1,72 @@
+<div class="dashboard">
+  <div class="dashboard__header">
+    <div class="dashboard__header__title">Dashboard</div>
+    <div class="dashboard__header__username">Welcome, User</div>
+  </div>
+  <div class="dashboard__content">
+    <div class="dashboard__section">
+      <div class="dashboard__section-header">NB Candidature par offre</div>
+      <div class="dashboard__section-content">
+        <div class="dashboard__card">
+          <div class="dashboard__card-title">Total</div>
+          <div class="dashboard__card-value">{{ stats.nbCandidatureParOffre }}</div>
+        </div>
+      </div>
+    </div>
+    <div class="dashboard__section">
+      <div class="dashboard__section-header">Nombre de candidature par Departement</div>
+      <div class="dashboard__section-content">
+        <div class="dashboard__card">
+          <div class="dashboard__card-title">Total</div>
+          <div class="dashboard__card-value">{{ stats.nbCandidatureParDepartement }}</div>
+        </div>
+      </div>
+    </div>
+    <div class="dashboard__section">
+      <div class="dashboard__section-header">Offre</div>
+      <div class="dashboard__section-content">
+        <div class="dashboard__card">
+          <div class="dashboard__card-title">Total</div>
+          <div class="dashboard__card-value">{{ stats.offre }}</div>
+        </div>
+      </div>
+    </div>
+    <div class="dashboard__section">
+      <div class="dashboard__section-header">Users</div>
+      <div class="dashboard__section-content">
+        <div class="dashboard__card">
+          <div class="dashboard__card-title">Total</div>
+          <div class="dashboard__card-value">{{ stats.usersTotal }}</div>
+        </div>
+      </div>
+    </div>
+    <div class="dashboard__section">
+      <div class="dashboard__section-header">Candidature</div>
+      <div class="dashboard__section-content">
+        <div class="dashboard__card">
+          <div class="dashboard__card-title">En cours</div>
+          <div class="dashboard__card-value">{{ stats.candidatureEnCours }}</div>
+        </div>
+        <div class="dashboard__card">
+          <div class="dashboard__card-title">Terminées</div>
+          <div class="dashboard__card-value">{{ stats.candidatureTerminees }}</div>
+        </div>
+      </div>
+    </div>
+    <div class="dashboard__section">
+      <div class="dashboard__section-header">Evaluation</div>
+      <div class="dashboard__section-content">
+        <div class="dashboard__card">
+          <div class="dashboard__card-title">En attente</div>
+          <div class="dashboard__card-value">{{ stats.evaluationEnAttente }}</div>
+        </div>
+      </div>
+    </div>
+    <div class="dashboard__section">
+      <div class="dashboard__section-header">Calendar</div>
+      <div class="dashboard__section-content">
+        <!-- Calendar content goes here -->
+      </div>
+    </div>
+  </div>
+</div>

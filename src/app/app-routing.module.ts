@@ -24,7 +24,7 @@ const routes: Routes = [
   //       loadChildren: () => import('./components/extra-pages/pages.module').then(m => m.PagesModule)
   //     },
   //   ]
-  // },
+   //},
   {
     path: '',
     component: AdminComponent,
@@ -50,6 +50,10 @@ const routes: Routes = [
       {
         path: 'recruitment',
         loadChildren: () => import('./components/recruitment/recruitment.module').then(m => m.recruitementModule)
+      },
+      {
+        path: 'recruit-offers',
+        loadChildren: () => import('./components/recruitment/recruit-offers/recruit-offers.module').then(m => m.recruitoffersModule)
       }
     ]
   },

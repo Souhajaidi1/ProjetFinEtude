@@ -1,0 +1,120 @@
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+/* Import Roboto Font */
+@import "https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic&subset=latin,cyrillic";
+
+/* Box model */
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+}
+
+/* Base styles */
+html, body {
+  position: relative;
+  min-height: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  margin: 16px;
+  padding: 0;
+  font-size: 62.5%;
+  font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  font-size: 1.4rem;
+  line-height: 2rem;
+  color: #212121;
+  background-color: #f5f5f5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+.example-container {
+  max-width: 100%;
+  margin: 20px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 8px;
+}
+.filter-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.filter-form-field {
+  flex: 1;
+  margin-right: 20px;
+}
+.mat-table {
+  overflow: auto;
+  border-radius: 4px;
+  // max-height: calc(100vh - 392px);
+  // background: #fff;
+}
+
+.mat-header-cell {
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  background-color: #3f51b5; /* Customize header background color */
+}
+
+.mat-cell {
+  font-size: 14px;
+}
+
+.mat-sort-header-arrow {
+  color: white;
+}
+
+.mat-header-row {
+  background-color: #3f51b5;
+  color: white;
+}
+
+.label {
+  font-size: 0.9rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 0.2rem;
+}
+
+.label-default {
+  background-color: #ffeb3b;
+}
+
+.label-success {
+  background-color: #4caf50;
+}
+
+.label-danger {
+  background-color: #f44336;
+}
+.mat-icon-button.edit-button {
+  color: #4caf50; /* Green for edit */
+}
+
+.mat-icon-button.delete-button {
+  color: #f44336; /* Red for delete */
+}
+
+.full-width-table {
+  width: 100%;
+}
+
+.material-icons {
+  font-size: 15px;
+}
+
+button {
+  text-transform: none;
+}
+
+.mat-raised-button {
+  margin-right: 10px;
+}
+
+.mat-flat-button {
+  margin-right: auto;
+}
+

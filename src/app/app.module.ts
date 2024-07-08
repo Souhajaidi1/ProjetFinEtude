@@ -43,7 +43,24 @@ import { NumberFormatter } from './helpers';
 import { ListCandidatesComponent } from './components/recruitment/recruit-candidates/list-candidates/list-candidates.component';
 import { DefaultComponent } from './components/dashboard/default/default.component';
 import { AddOfferFormComponent } from './components/recruitment/recruit-offers/add-offer-form/add-offer-form.component';
-
+import { DashboardComponent } from './components/recruitment/recruit-dashboard/dashboard/dashboard.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatListModule } from '@angular/material/list';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatIconModule } from '@angular/material/icon';
+import { EditOfferDialogComponent } from './components/recruitment/recruit-offers/offer-management/edit-offer-dialog/edit-offer-dialog.component';
+import { EvaluationComponent } from './components/recruitment/recruit-evaluation/evaluation/evaluation.component';
+import { recruitementModule } from './components/recruitment/recruit-calendar/recruit-calendar.module';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
+import { MatOptionModule } from '@angular/material/core';
+import { TestListComponent } from './components/recruitment/recruit-evaluation/test-list/test-list.component';
+import { MatRadioModule } from '@angular/material/radio';
 export const CUSTOM_DT_FORMATS = {
   parse: {
     dateInput: 'L',
@@ -63,9 +80,16 @@ export const CUSTOM_DT_FORMATS = {
     AuthComponent,
     BreadcrumbsComponent,
     ExpirationSessionComponent,
-    ListCandidatesComponent
+    ListCandidatesComponent,
+    DashboardComponent,
+    EditOfferDialogComponent,
+    EvaluationComponent,
+    TestListComponent
   ],
   imports: [
+    MatTableModule,
+    MatSortModule,
+    MatTooltipModule,
     CommonModule,
     BrowserModule,
     FormsModule,
@@ -77,6 +101,7 @@ export const CUSTOM_DT_FORMATS = {
     SharedModule,
     ProjectManagementModule,
     HumanResourcesModule,
+    recruitementModule,
     DirectivesModule,
     MaterialModule,
     ColorPickerModule,
@@ -87,7 +112,17 @@ export const CUSTOM_DT_FORMATS = {
     LockScreenModule,
     AuthModule,
     MatButtonModule,
-    BotDetectCaptchaModule
+    BotDetectCaptchaModule,
+    MatDatepickerModule,
+    MatIconModule,
+    MatPaginatorModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatListModule,
+    MatSelectModule,
+    MatNativeDateModule,
+    MatOptionModule,
+    MatRadioModule
 
 
   ],

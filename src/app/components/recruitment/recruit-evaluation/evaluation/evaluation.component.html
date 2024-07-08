@@ -1,0 +1,69 @@
+<div class="container">
+  <h1>Evaluation Form</h1>
+  <form [formGroup]="evaluationForm" (ngSubmit)="onSubmit()">
+    <div class="table-responsive">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Competence</th>
+            <th>Question</th>
+            <th>Score</th>
+            <th>Remark</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Soft Skills Section -->
+          <tr *ngFor="let question of softSkillsQuestions">
+            <td>Soft Skill</td>
+            <td>{{ question.text }}</td>
+            <td>
+              <div class="radio-options">
+                <div *ngFor="let score of scores" class="form-check-inline">
+                  <input
+                    type="radio"
+                    class="form-check-input"
+                    [id]="'softQuestion' + question.id + 'score' + score"
+                    [formControlName]="question.controlName"
+                    [value]="score"
+                  />
+                  <label class="form-check-label" [for]="'softQuestion' + question.id + 'score' + score">{{ score }}</label>
+                </div>
+              </div>
+            </td>
+            <td>
+              <input type="text" class="form-control" [formControlName]="'remark' + question.id" />
+            </td>
+          </tr>
+
+          <!-- Hard Skills Section -->
+          <tr *ngFor="let question of hardSkillsQuestions">
+            <td>Hard Skill</td>
+            <td>{{ question.text }}</td>
+            <td>
+              <div class="radio-options">
+                <div *ngFor="let score of scores" class="form-check-inline">
+                  <input
+                    type="radio"
+                    class="form-check-input"
+                    [id]="'hardQuestion' + question.id + 'score' + score"
+                    [formControlName]="question.controlName"
+                    [value]="score"
+                  />
+                  <label class="form-check-label" [for]="'hardQuestion' + question.id + 'score' + score">{{ score }}</label>
+                </div>
+              </div>
+            </td>
+            <td>
+              <input type="text" class="form-control" [formControlName]="'remark' + question.id" />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Submit Button -->
+    <div class="text-center mt-4">
+      <button type="submit" class="btn btn-primary" [disabled]="!evaluationForm.valid">Submit</button>
+    </div>
+  </form>
+</div>

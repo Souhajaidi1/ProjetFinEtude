@@ -1,0 +1,88 @@
+<div class="row dialog-container">
+  <div class="col-md-12">
+    <form>
+      <h1>Edit Offer</h1>
+      <br>
+      <div class="row">
+        <!-- First Column -->
+        <div class="col-md-6" style="position: relative;">
+          <fieldset>
+            <legend><span class="number">1</span> Your Offer Info</legend>
+            <div class="form-group">
+              <label for="referenceoffer">Reference Offer:</label>
+              <input type="text" id="referenceoffer" name="referenceoffer" class="bottom-border" [(ngModel)]="data.referenceoffer" disabled>
+            </div>
+            <div class="form-group">
+              <label for="position">Position:</label>
+              <input type="text" id="position" name="position" class="bottom-border" [(ngModel)]="data.position">
+            </div>
+
+            <div class="form-group">
+              <label for="contrat">Contrat:</label>
+              <select id="contrat" name="contrat" [(ngModel)]="data.contrat">
+                <option value="">Select Contrat</option>
+                <option value="internship">Internship</option>
+                <option value="cdi">CDI</option>
+                <option value="cdd">CDD</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="skills">Skills:</label>
+              <input type="text" id="skills" name="skills" [(ngModel)]="data.skills">
+            </div>
+
+            <div class="form-group">
+              <label for="remuneration">Remuneration:</label>
+              <input type="number" id="remuneration" name="remuneration" [(ngModel)]="data.remuneration">
+            </div>
+          </fieldset>
+        </div>
+
+        <!-- Vertical Line -->
+        <div class="col-md-6" style="position: relative;">
+          <div style="position: absolute; top: 0; bottom: 0; left: -1px; width: 1px; background-color: #ccc;"></div>
+          <fieldset>
+            <legend><span class="number">2</span> Your Skills and Experience</legend>
+
+            <div class="form-group">
+              <label for="niceToHave">Nice To Have:</label>
+              <input type="text" id="niceToHave" name="niceToHave" [(ngModel)]="data.nicetohave">
+            </div>
+
+            <div class="form-group">
+              <label for="formationExigees">Formation Exigees:</label>
+              <input type="text" id="formationExigees" name="formationExigees" [(ngModel)]="data.formationExigees">
+            </div>
+
+            <div class="form-group">
+              <label for="studyingLevel">Studying Level:</label>
+              <select id="studyingLevel" name="studyingLevel" [(ngModel)]="data.studyingLevel">
+                <option value="">Select Level</option>
+                <option value="bac">Bac</option>
+                <option value="bac+2">Bac+2</option>
+                <option value="bac+3">Bac+3</option>
+                <option value="bac+5">Bac+5</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="experience">Experience:</label>
+              <select id="experience" name="experience" [(ngModel)]="data.experience">
+                <option value="">Select Experience</option>
+                <option value="lessThan1Year">Less than 1 year</option>
+                <option value="1To2Year">1 to 2 years</option>
+                <option value="2To5Year">2 to 5 years</option>
+                <option value="moreThan5Year">More than 5 years</option>
+              </select>
+            </div>
+          </fieldset>
+        </div>
+      </div>
+      <br />
+      <div class="dialog-actions">
+        <button mat-button (click)="onCancel()" class="cancel-button">Cancel</button>
+        <button mat-button (click)="onSave()" class="save-button">Save</button>
+      </div>
+    </form>
+  </div>
+</div>

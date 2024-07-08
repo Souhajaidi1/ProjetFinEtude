@@ -43,7 +43,7 @@ export class WorkFromHomeRequestTableComponent implements OnInit, OnDestroy {
     }
     this.selectedWorkHomeRequestId = 0;
     this.dataSource = new MatTableDataSource(this.workFromHomeRequests);
-    this.subscription = this.searchFilterService.resultChanged
+    this.subscription = this.searchFilterService.offers$
       .subscribe(
         () => {
           this.dataSource = new MatTableDataSource(this.searchFilterService.showingDataLastFilter);

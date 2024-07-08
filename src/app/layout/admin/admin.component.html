@@ -184,29 +184,12 @@
                   </li>
 
 
-                  <li id="offers" class="button"  (click)="toggleOffers()">
+                  <li id="offers" class="button"  routerLink="recruitment/recruit-offers/offer-management">
                     <div class="icon-container">
                       <mat-icon>local_offer</mat-icon>
                     </div>
                     <p>Offers             </p>
                   </li>
-
-
-
-                    <li  class="button" routerLink="/recruitment/recruit-offers/add-offer" *ngIf="offersClicked" >
-                      <div class="icon-container">
-                      </div>
-                      <p style="margin-left: 15%;">add Offers</p>
-                    </li>
-
-                  <li  class="button " routerLink="recruitment/recruit-offers/offer-management" *ngIf="offersClicked" >
-                    <div class="icon-container">
-                    </div>
-                    <p style="margin-left: 15%;">liste Offers</p>
-                  </li>
-
-
-
 
                   <li id="candidates" class="button" routerLink="/recruitment/recruit-candidates">
                     <div class="icon-container">
@@ -214,17 +197,23 @@
                     </div>
                     <p>Candidates</p>
                   </li>
-                  <li id="evaluation" class="button" routerLink="/recruitment/recruit-evaluation">
-                    <div class="icon-container">
-                      <mat-icon>trending_up</mat-icon>
-                    </div>
-                    <p>Evaluation</p>
-                  </li>
+
                   <li id="calendar" class="button" routerLink="/recruitment/recruit-calendar">
                     <div class="icon-container">
                       <mat-icon>event</mat-icon>
                     </div>
                     <p>Calendar</p>
+                    <li id="evaluation" class="button" routerLink="/recruitment/recruit-evaluation/Listevaluation">
+                      <div class="icon-container">
+                        <mat-icon>trending_up</mat-icon>
+                      </div>
+                      <p>Tests</p>
+                    </li>
+                  <li id="evaluation" class="button" routerLink="/recruitment/recruit-evaluation">
+                    <div class="icon-container">
+                      <mat-icon>assessment</mat-icon>
+                    </div>
+                    <p>Evaluation</p>
                   </li>
                 </ul>
               </nav>

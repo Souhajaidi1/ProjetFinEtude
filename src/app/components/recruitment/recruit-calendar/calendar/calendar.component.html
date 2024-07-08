@@ -1,0 +1,26 @@
+<div class="calendar">
+  <div class="calendar-header">
+    <button (click)="prevMonth()">&lt;</button>
+    <div class="month-year">
+      <span class="month">{{ monthNames[currentMonth] }}</span>
+      <span class="year">{{ currentYear }}</span>
+    </div>
+    <button (click)="nextMonth()">&gt;</button>
+  </div>
+  <div class="calendar-body">
+    <div class="day-names">
+      <div class="day-name" *ngFor="let day of dayNames">{{ day }}</div>
+    </div>
+    <div class="days">
+      <div class="day other-month" *ngFor="let _ of otherMonthDays"></div>
+      <div class="day"
+           *ngFor="let day of daysInMonth"
+           [ngClass]="{'today': isToday(day)}"
+           (click)="openDialog(day)">
+        {{ day }}
+      </div>
+    </div>
+  </div>
+</div>
+
+

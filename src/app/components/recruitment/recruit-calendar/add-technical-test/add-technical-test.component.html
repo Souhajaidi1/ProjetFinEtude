@@ -1,0 +1,27 @@
+<h1 mat-dialog-title>Technical Interview</h1>
+<div mat-dialog-content>
+  <form>
+    <mat-form-field>
+      <input matInput [(ngModel)]="data.date" [matDatepicker]="picker" placeholder="Interview Date">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Hour" [(ngModel)]="data.hour" type="time">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Duration" [(ngModel)]="data.duration" type="number">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select placeholder="Type" [(ngModel)]="data.type">
+        <mat-option value="online">Online</mat-option>
+        <mat-option value="in-person">In Person</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button (click)="onSave()">Save</button>
+</div>
+

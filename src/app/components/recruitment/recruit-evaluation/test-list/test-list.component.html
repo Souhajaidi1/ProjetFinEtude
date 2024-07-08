@@ -1,0 +1,67 @@
+<h1>Tests and Interviews</h1>
+<div class="toolbar">
+  <div class="filter-container">
+    <mat-form-field appearance="outline" class="filter-form-field">
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field>
+    <button mat-button color="primary" (click)="resetFilters()">Reset Filters</button>
+  </div>
+  <div class="toggle-container">
+    <mat-slide-toggle (change)="toggleMode($event)" color="primary">
+      Show {{ showHRTests ? 'Technical Tests' : 'HR Tests' }}
+    </mat-slide-toggle>
+  </div>
+</div>
+
+<mat-paginator [pageSizeOptions]="[5, 10, 25]" showFirstLastButtons></mat-paginator>
+
+<table mat-table [dataSource]="showHRTests ? hrTests : techTests" class="mat-elevation-z8">
+
+  <!-- ID Column -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> ID </th>
+    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+  </ng-container>
+
+  <!-- Interview Date Column -->
+  <ng-container matColumnDef="interviewdate">
+    <th mat-header-cell *matHeaderCellDef> Interview Date </th>
+    <td mat-cell *matCellDef="let element"> {{element.interviewdate | date}} </td>
+  </ng-container>
+
+  <!-- Hour Column -->
+  <ng-container matColumnDef="hour">
+    <th mat-header-cell *matHeaderCellDef> Hour </th>
+    <td mat-cell *matCellDef="let element"> {{element.hour}} </td>
+  </ng-container>
+
+  <!-- Duration Column -->
+  <ng-container matColumnDef="duration">
+    <th mat-header-cell *matHeaderCellDef> Duration </th>
+    <td mat-cell *matCellDef="let element"> {{element.duration}} </td>
+  </ng-container>
+
+  <!-- Type Column -->
+  <ng-container matColumnDef="type">
+    <th mat-header-cell *matHeaderCellDef> Type </th>
+    <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+  </ng-container>
+
+  <!-- Action Column -->
+  <ng-container matColumnDef="action">
+    <th mat-header-cell *matHeaderCellDef> Action </th>
+    <td mat-cell *matCellDef="let element">
+      <!-- Add your action buttons here -->
+      <button mat-icon-button class="edit-button" (click)="editTest(element)">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button class="delete-button" (click)="deleteTest(element)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+

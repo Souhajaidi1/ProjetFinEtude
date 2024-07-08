@@ -1,22 +1,25 @@
 <div class="row">
   <div class="col-md-12">
       <form  (ngSubmit)="addOffers()">
-          <h1>Offres/Add Offre</h1>
+          <h1>Add Offer</h1>
 <br>
           <div class="row">
               <!-- First Column -->
               <div class="col-md-6" style="position: relative;">
                   <fieldset>
                       <legend><span class="number">1</span> Your Offer Info</legend>
-
+                      <div class="form-group">
+                        <label for="referenceoffer">referenceoffer:</label>
+                        <input type="text" id="referenceoffer" name="referenceoffer" class="bottom-border" required [(ngModel)]="referenceoffer">
+                      </div>
                       <div class="form-group">
                           <label for="position">Position:</label>
                           <input type="text" id="position" name="position" class="bottom-border" required [(ngModel)]="position">
                       </div>
 
                       <div class="form-group">
-                          <label for="type">Type:</label>
-                          <select id="type" name="type" required [(ngModel)]="type">
+                          <label for="typeOffer">Type:</label>
+                          <select id="typeOffer" name="typeOffer" required [(ngModel)]="typeOffer">
                               <option value="">Select Type</option>
                               <option value="remote">Remote</option>
                               <option value="onsite">Onsite</option>
@@ -32,6 +35,16 @@
                               <option value="cdd">CDD</option>
                           </select>
                       </div>
+                      <div class="form-group">
+                        <label for="experience">Experience:</label>
+                        <select id="experience" name="experience" required [(ngModel)]="experience">
+                            <option value="">Select Experience</option>
+                            <option value="lessThan1Year">Less than 1 year</option>
+                            <option value="1To2Year">1 to 2 years</option>
+                            <option value="2To5Year">2 to 5 years</option>
+                            <option value="moreThan5Year">More than 5 years</option>
+                        </select>
+                    </div>
 
                       <div class="form-group">
                           <label for="remuneration">Remuneration:</label>
@@ -86,7 +99,11 @@
               </div>
           </div>
         <br/>
-          <button type="submit">Create Offer</button>
+
+        <div class="form-actions">
+          <button type="button" (click)="onCancel()" class="cancel-button">Cancel</button>
+          <button type="submit" class="submit-button">Add</button>
+        </div>
       </form>
   </div>
 </div>

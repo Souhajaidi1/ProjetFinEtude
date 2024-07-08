@@ -1,0 +1,97 @@
+:host {
+  display: block;
+  padding: 16px;
+}
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+mat-slide-toggle {
+  margin-bottom: 16px;
+
+  // Change the color to blue when the toggle is checked
+  &.mat-checked .mat-slide-toggle-thumb {
+    background-color: #3f51b5; // blue color
+  }
+
+  &.mat-checked .mat-slide-toggle-bar {
+    background-color: rgba(63, 81, 181, 0.5); // light blue color
+  }
+}
+
+.filter-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 40;
+
+  input {
+    flex: 1;
+    margin-right: 12px;
+  }
+
+  button {
+    margin-left: 8px;
+  }
+}
+
+table {
+  width: 100%;
+  margin-bottom: 16px;
+
+  th.mat-header-cell {
+    text-align: left;
+  }
+
+  td.mat-cell, th.mat-header-cell {
+    padding: 8px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  }
+
+  tr.mat-header-row {
+    background-color: #f5f5f5;
+  }
+
+  tr.mat-row:hover {
+    background-color: rgba(0, 0, 0, 0.04);
+  }
+}
+
+.toggle-container {
+  display: flex;
+  align-items: center;
+}
+
+.mat-paginator {
+  margin-top: 16px;
+}
+
+button {
+  &.edit-button {
+    color: #3f51b5; // blue color for edit icon
+  }
+
+  &.delete-button {
+    color: #f44336; // red color for delete icon
+  }
+}
+
+.mat-icon-button {
+  // Remove background and hover effects
+  background-color: transparent;
+
+  &:hover {
+    background-color: transparent;
+  }
+
+  // Ensure the button only has the icon color
+  .mat-icon {
+    fill: currentColor;
+  }
+}
+
+

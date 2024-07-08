@@ -5,7 +5,8 @@ import { CookieService } from 'ngx-cookie-service';
 import { environment } from 'environments/environment';
 import { CaptchaComponent } from 'angular-captcha';
 import { PasswordStrengthBarComponent } from 'app/shared/password-strength-bar/password-strength-bar.component';
-import { RecruitOffersService } from 'app/services/recruitement/recruit-offers/recruit-offers.service';
+import { AuthServiceService } from 'app/services/AuthService/auth-service.service';
+import { Token } from '@angular/compiler';
 
 @Component({
   selector: 'app-login',
@@ -13,19 +14,23 @@ import { RecruitOffersService } from 'app/services/recruitement/recruit-offers/r
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  idleState = 'Not started.';
-  timedOut = false;
-  lastPing?: Date = null;
-  idlestart = false;
-  public commitTime: string;
-  failedLogin = false;
-  failedCaptcha = false;
+  // idleState = 'Not started.';
+  // timedOut = false;
+  // lastPing?: Date = null;
+  // idlestart = false;
+   public commitTime: string;
+   failedLogin = false;
+   failedCaptcha = false;
+  userLogin: string = '';
+  userPassword: string = '';
+  returnUrl: string;
   @ViewChild(CaptchaComponent, {static: true}) captchaComponent: CaptchaComponent;
   errorMessages: string;
 
   recaptchaSended = false;
+
   constructor(
-    private AuthService:RecruitOffersService,
+    private AuthService:AuthServiceService,
     private route: ActivatedRoute,
     private router: Router,
     private authenticationService: AuthenticationService,
@@ -33,9 +38,6 @@ export class LoginComponent implements OnInit {
   ) {
     this.commitTime = environment.commitTime;
   }
-  userLogin = '';
-  userPassword = '';
-  returnUrl: string;
   isLoading = false;
   ngOnInit() {
     document.querySelector('body').setAttribute('themebg-pattern', 'theme1');
@@ -48,68 +50,76 @@ export class LoginComponent implements OnInit {
 
   }
 
-  validateCaptcha(): void {
-    const userEnteredCaptchaCode = this.captchaComponent.userEnteredCaptchaCode;
-    const captchaId = this.captchaComponent.captchaId;
+  // validateCaptcha(): void {
+  //   const userEnteredCaptchaCode = this.captchaComponent.userEnteredCaptchaCode;
+  //   const captchaId = this.captchaComponent.captchaId;
 
-    const postData = {
-      userEnteredCaptchaCode: userEnteredCaptchaCode,
-      captchaId: captchaId
-    };
+  //   const postData = {
+  //     userEnteredCaptchaCode: userEnteredCaptchaCode,
+  //     captchaId: captchaId
+  //   };
 
-    this.authenticationService.validateCaptcha(postData)
-      .subscribe(
-        response => {
-          if (response === 'false') {
-            this.failedLogin = false;
-            this.failedCaptcha = true;
-            this.captchaComponent.reloadImage();
-          } else {
-            this.login();
-            this.failedCaptcha = false;
-          }
+  //   this.authenticationService.validateCaptcha(postData)
+  //     .subscribe(
+  //       response => {
+  //         if (response === 'false') {
+  //           this.failedLogin = false;
+  //           this.failedCaptcha = true;
+  //           this.captchaComponent.reloadImage();
+  //         } else {
+  //           this.login();
+  //           this.failedCaptcha = false;
+  //         }
+  //       },
+  //       error => {
+  //         this.failedLogin = false;
+  //         this.failedCaptcha = true;
+  //       });
+  // }
+  login(loginForm: any) {
+    if (loginForm.valid) {
+      this.AuthService.Login(this.userLogin, this.userPassword).subscribe(
+        (res) => {
+          console.log('Login successful, token:', res);
+          const accessToken = res;
+          this.AuthService.setAccessToken(accessToken);
+          this.router.navigate([this.returnUrl]);
         },
-        error => {
-          this.failedLogin = false;
-          this.failedCaptcha = true;
-        });
-  }
-  Loginnn(loginForm:any){
-    let data={
-      grant_type:this.userLogin,
-      username:this.userPassword,
-    }
-     this.AuthService.Login(data).subscribe((res)=>{
-      console.log(res)
-    });
-  }
-
-  login() {
-    this.isLoading = true;
-    const score = PasswordStrengthBarComponent.measureStrength(this.userPassword);
-    this.authenticationService.login(this.userLogin, this.userPassword, score)
-      .subscribe(
-        userProfile => {
-          this.isLoading = false;
-          if (userProfile && this.authenticationService.isAuthenticated()) {
-            this.cookieService.set('userLogin', this.userLogin);
-            if (this.returnUrl.indexOf(';') > -1) {
-              this.getOptionalParameters(this.returnUrl);
-            } else {
-              this.router.navigate([this.returnUrl]);
-            }
-          } else {
-            this.failedCaptcha = false;
-            this.failedLogin = true;
-          }
-        },
-        () => {
-          this.isLoading = false;
-          this.failedCaptcha = false;
-          this.failedLogin = true;
+        (error) => {
+          console.error('Login failed:', error);
         }
       );
+    } else {
+      console.error('Form is invalid');
+    }
   }
+
+  // login() {
+  //   this.isLoading = true;
+  //   const score = PasswordStrengthBarComponent.measureStrength(this.userPassword);
+  //   this.authenticationService.login(this.userLogin, this.userPassword, score)
+  //     .subscribe(
+  //       userProfile => {
+  //         this.isLoading = false;
+  //         if (userProfile && this.authenticationService.isAuthenticated()) {
+  //           this.cookieService.set('userLogin', this.userLogin);
+  //           if (this.returnUrl.indexOf(';') > -1) {
+  //             this.getOptionalParameters(this.returnUrl);
+  //           } else {
+  //             this.router.navigate([this.returnUrl]);
+  //           }
+  //         } else {
+  //           this.failedCaptcha = false;
+  //           this.failedLogin = true;
+  //         }
+  //       },
+  //       () => {
+  //         this.isLoading = false;
+  //         this.failedCaptcha = false;
+  //         this.failedLogin = true;
+  //       }
+  //     );
+  // }
 
   getOptionalParameters(Url: string) {
     const queryParams = {};
