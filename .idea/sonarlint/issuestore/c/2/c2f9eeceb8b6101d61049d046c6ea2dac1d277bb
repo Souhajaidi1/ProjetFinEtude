@@ -1,11 +1,4 @@
 
-q
-java:S1104"TMake Remarque a static final constant or non-public and provide accessors if needed.(·ˆûş8ƒğËÍé1
-|
-java:S1104"ZMake avisEvaluateur a static final constant or non-public and provide accessors if needed.(šØ»Âşÿÿÿÿ8„ğËÍé1
-q
-java:S1104"TMake Resultat a static final constant or non-public and provide accessors if needed.(Ç¨¶è8„ğËÍé1
-{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(­¼Àúÿÿÿÿ8„ğËÍé1
-t	java:S116"XRename this field "id_evaluation" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Éíúî8†ğËÍé1
-o	java:S116"SRename this field "Remarque" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(·ˆûş8†ğËÍé1
-o	java:S116"SRename this field "Resultat" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ç¨¶è8†ğËÍé1
+{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(­¼Àúÿÿÿÿ8àİØš‡2
+t	java:S116"XRename this field "id_evaluation" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(˜ïåù8âİØš‡2
+]	java:S125"<This block of commented-out lines of code should be removed.(¡é£ÿÿÿÿÿ8äİØš‡2

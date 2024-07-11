@@ -1,0 +1,17 @@
+
+†
+java:S1488B"dImmediately return this expression instead of assigning it to the temporary variable "applications".(Ş€–¦ûÿÿÿÿ8¢ú‚İø1
+{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¼©ì¸úÿÿÿÿ8¤ú‚İø1
+j
+java:S2259,"MA "NullPointerException" could be thrown; "getContentType()" can return null.(ñÌ8¼ıáİø1
+j
+java:S2259)"MA "NullPointerException" could be thrown; "getContentType()" can return null.(×’æî8¼ıáİø1
+]	java:S125"<This block of commented-out lines of code should be removed.(…ì…éıÿÿÿÿ8Àıáİø1
+W	java:S125L"<This block of commented-out lines of code should be removed.(î¼¶`8Üòİİø1
+F
+java:S1128
+")Remove this unused import 'java.io.File'.(†Ğ¥Å8Èıáİø1
+Q
+java:S1128"4Remove this unused import 'java.io.FileInputStream'.(˜³ÉÓ8Éıáİø1
+Q
+java:S1128"5Remove this unused import 'java.io.FileOutputStream'.(˜«ªg8Éıáİø1

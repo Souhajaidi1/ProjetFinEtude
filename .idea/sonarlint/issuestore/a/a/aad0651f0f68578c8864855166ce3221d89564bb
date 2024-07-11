@@ -1,4 +1,6 @@
 
-r	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(›äı„üÿÿÿÿ8èôüÊã1
-m	java:S117$"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Øû„Ï8èôüÊã1
-u	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ì¾ 8éôüÊã1
+r	java:S117*"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(›äı„üÿÿÿÿ8´ÔÉ­ú1
+m	java:S117<"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Øû„Ï8µÔÉ­ú1
+u	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ì¾ 8¶ÔÉ­ú1
+X	java:S125"<This block of commented-out lines of code should be removed.(‹Åî8ÏÔÉ­ú1
+]	java:S125,"<This block of commented-out lines of code should be removed.(è¶™Ñüÿÿÿÿ8ÙÔÉ­ú1

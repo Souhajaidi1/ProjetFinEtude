@@ -1,5 +1,5 @@
 server:
-  port: 8087
+    port: 8087
   
 spring:
   application:
@@ -11,14 +11,14 @@ spring:
       globalcors:
         corsConfigurations:
           '[/**]':
-            allowedOrigins: "http://localhost:4200" # or "*" to allow all origins
+            allowedOrigins: "http://localhost:4200"
             allowedMethods:
               - GET
               - POST
               - PUT
               - DELETE
               - OPTIONS
-            allowedHeaders: "*" # or specify headers
+            allowedHeaders: "*"
             allowCredentials: true
       routes:
       - id: UserMS
@@ -28,11 +28,11 @@ spring:
         - Path=/user/**
 
 
-      - id: gestionAuth
+      - id: offerMS
         uri:
-          lb://gestionAuth
+          lb://offers
         predicates:
-          - Path=/auth/**
+          - Path=/offers/**
         
 
 

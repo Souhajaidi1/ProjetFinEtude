@@ -31,7 +31,7 @@ public class SecurityConfig {
                 .cors(Customizer.withDefaults())
                 .csrf(Customizer.withDefaults())
                 .authorizeHttpRequests((authorize) -> authorize
-                        .requestMatchers("applications/**").hasAuthority("realm-user")
+                        .requestMatchers("applications/**").hasAuthority("realm-admin")
                         //  .requestMatchers("apioffer/retrievealloffer").hasAuthority("realm-user")
                         .anyRequest().authenticated())
                 // . headers(h->h.frameOptions(fo->fo.disable()))

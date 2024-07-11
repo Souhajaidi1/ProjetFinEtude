@@ -7,6 +7,7 @@ import jakarta.persistence.Id;
 import lombok.*;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Builder
@@ -19,20 +20,16 @@ public class Offer implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idOffer;
-    private int referenceoffer;
-    private String poste;
-    private String lieu;
-    private String activite;
-    private String mission;
-    private String profilPoste;
-    private String activitePrincipal;
-    private String niveau;
+    private String referenceoffer;
+    private String position;
+    private String contrat;
+    private String remuneration;
+    private String skills;
+    private String nicetohave;
+    private String studyingLevel;
     private String experience;
     private Date dateOffer;
-    private int nbPersonnes;
     private String formationExigees;
-    private String competenceExigees;
-    private String autreExigences;
     private String TypeOffer;
 
 

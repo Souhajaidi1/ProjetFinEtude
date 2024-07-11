@@ -1,6 +1,2 @@
 
-m	java:S117&"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÀŞ½ğ8Ó…˜Ÿá1
-r	java:S117+"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(êò¡ëüÿÿÿÿ8Ô…˜Ÿá1
 v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ëşø×8Õ…˜Ÿá1
-R
-java:S1128"5Remove this unused import 'lombok.NoArgsConstructor'.(¸¨›8ö±˜Ÿá1

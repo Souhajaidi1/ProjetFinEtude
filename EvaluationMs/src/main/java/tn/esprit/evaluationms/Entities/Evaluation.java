@@ -1,9 +1,6 @@
 package tn.esprit.evaluationms.Entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,8 +16,14 @@ import java.io.Serializable;
 public class Evaluation implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int id_evaluation ;
-    public  String Remarque ;
-    public String avisEvaluateur ;
-    public String Resultat ;
+    private int id_evaluation;
+    //need to map id user=candidate from user
+    //public int id_candidate ;
+    private String remarque;
+    private String resultat;
+    private int softskills;
+    private int hardskills;
+    @OneToOne
+    public Interview interview;
+
 }

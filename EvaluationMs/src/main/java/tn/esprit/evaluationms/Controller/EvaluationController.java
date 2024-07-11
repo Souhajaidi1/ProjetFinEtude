@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import tn.esprit.evaluationms.Entities.Interview;
 import tn.esprit.evaluationms.Services.IEvaluationService;
 import tn.esprit.evaluationms.Entities.Evaluation;
 import java.util.List;
@@ -33,13 +34,41 @@ public class EvaluationController {
         return new ResponseEntity<>(evaluations, HttpStatus.OK);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/deleteev/{id}")
     public ResponseEntity<Void> deleteEvaluation(@PathVariable("id") int id) {
         evaluationService.deleteEvaluation(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+    @PostMapping("/createtest")
+    public ResponseEntity<Interview> saveTest(@RequestBody Interview interview) {
+        Interview createdInterview = evaluationService.saveTest(interview);
+        return new ResponseEntity<>(createdInterview, HttpStatus.CREATED);
+    }
 
-    @GetMapping("/calculate-score/{id}")
+    @GetMapping("/getidtest/{id}")
+    public ResponseEntity<Interview> getTestById(@PathVariable int id) {
+        Interview interview = evaluationService.getTestById(id);
+        if (interview != null) {
+            return new ResponseEntity<>(interview, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @GetMapping("/alltests")
+    public ResponseEntity<List<Interview>> getAllTests() {
+        List<Interview> interviews = evaluationService.getAllTests();
+        return new ResponseEntity<>(interviews, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/deletetest/{id}")
+    public ResponseEntity<Void> deleteTest(@PathVariable int id) {
+        evaluationService.deleteTest(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+}
+
+  /*  @GetMapping("/calculate-score/{id}")
     public ResponseEntity<Double> calculateScore(@PathVariable("id") int id) {
         Evaluation evaluation = evaluationService.getEvaluationById(id);
         if (evaluation != null) {
@@ -48,6 +77,6 @@ public class EvaluationController {
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-    }
-}
+    }*/
+
 

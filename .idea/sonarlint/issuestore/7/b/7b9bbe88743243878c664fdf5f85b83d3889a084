@@ -1,3 +1,6 @@
 
 {	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¹úý¾ýÿÿÿÿ8Â¹Ìñá1
-u	java:S116$"TRename this field "TypeOffer" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‡‡Ì€ýÿÿÿÿ8È¹Ìñá1
+u	java:S116!"TRename this field "TypeOffer" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‡‡Ì€ýÿÿÿÿ8È¹Ìñá1
+R
+java:S1128
+"0Remove this unused import 'java.time.LocalDate'.(›‘¬èýÿÿÿÿ8¶­«Öø1
