@@ -13,6 +13,9 @@ public interface IEvaluationService {
     Interview saveTest(Interview interview);
     Interview getTestById(int id);
     List<Interview> getAllTests();
+
+    Interview updateTest(int id, Interview interview);
+
     void deleteTest(int id);
 }
 

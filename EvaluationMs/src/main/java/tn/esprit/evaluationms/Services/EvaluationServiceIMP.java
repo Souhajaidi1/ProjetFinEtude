@@ -60,6 +60,12 @@ public class EvaluationServiceIMP implements IEvaluationService {
     public List<Interview> getAllTests() {
         return interviewRepo.findAll();
     }
+    @Override
+    public Interview updateTest(int id , Interview interview){
+        Interview interview1 = interviewRepo.findById(id).orElse(null);
+        interview.setIdTest(interview1.getIdTest());
+        return interviewRepo.save(interview);
+    }
 
     @Override
     public void deleteTest(int id) {

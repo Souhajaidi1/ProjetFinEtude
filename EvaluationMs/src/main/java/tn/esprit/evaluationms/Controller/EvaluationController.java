@@ -60,7 +60,11 @@ public class EvaluationController {
         List<Interview> interviews = evaluationService.getAllTests();
         return new ResponseEntity<>(interviews, HttpStatus.OK);
     }
-
+    @PutMapping("/updatetest/{id}")
+    public ResponseEntity<Interview> updateTest(@RequestBody Interview interview , @PathVariable int id) {
+        Interview updatedInterview = evaluationService.updateTest(id, interview);
+        return new ResponseEntity<>(updatedInterview, HttpStatus.CREATED);
+    }
     @DeleteMapping("/deletetest/{id}")
     public ResponseEntity<Void> deleteTest(@PathVariable int id) {
         evaluationService.deleteTest(id);
