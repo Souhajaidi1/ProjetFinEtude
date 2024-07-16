@@ -1,4 +1,5 @@
 package tn.esprit.evaluationms.Services;
+import tn.esprit.evaluationms.Client.Role;
 import tn.esprit.evaluationms.Client.User;
 import tn.esprit.evaluationms.Client.UserClient;
 import tn.esprit.evaluationms.Entities.Evaluation;
@@ -45,14 +46,26 @@ public class EvaluationServiceIMP implements IEvaluationService {
 
     @Override
     public Interview saveTest(Interview interview) {
+
         return interviewRepo.save(interview);
+    }
+    @Override
+    public void assignEvaluatorsToInterview(Role evaluatorRole, Role candidateRole, Interview interview) {
+        List<User> evaluators = userClient.getUsersByRole(Role.valueOf(evaluatorRole.name()));
+        List<User> candidates = userClient.getUsersByRole(Role.valueOf(candidateRole.name()));
+
+        if (!evaluators.isEmpty() && !candidates.isEmpty()) {
+            interview.setUser_Evaluateur(evaluators.get(0)); // Example assignment
+            interview.setUser_Candidat(candidates.get(0));   // Example assignment
+            interviewRepo.save(interview);
+        }
     }
 
     @Override
     public Interview getTestById(int id) {
         Interview interview = interviewRepo.findById(id).orElseThrow(() -> new RuntimeException("Interview not found"));
         User user = userClient.getUserById(interview.getUserId());
-        interview.setUser(user);
+      //  interview.setUser(user);
         return interview;
     }
 

@@ -22,11 +22,13 @@ public class Interview implements Serializable {
     public Date interviewdate;
     public Date hour ;
     public int duration ;
-    public String Modality ;
+    public String modality ;
     public TypeInterview type ;
     private Long userId; // Foreign key to User=evaluator and candidate
     @Transient
-    private User user;
+    private User user_Candidat;
+    @Transient
+    private User user_Evaluateur;
     @OneToOne
     public Evaluation evaluation;
 }

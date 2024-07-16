@@ -9,6 +9,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.userms.Services.IUserService;
+import tn.esprit.userms.entities.Role;
 import tn.esprit.userms.entities.User;
 
 import java.util.List;
@@ -59,8 +60,13 @@ public class UserController {
         List<User> users = userService.getAllUsers();
         return new ResponseEntity<>(users, HttpStatus.OK);
     }
+    @GetMapping("getbyrole/{role}")
+    public ResponseEntity<List<User>>getUserByRole(@PathVariable Role role){
+        List<User> users1 = userService.getUsersByRole(role);
+        return new ResponseEntity<>(users1, HttpStatus.OK);
+    }
 
-    @GetMapping("/{id}")
+    @GetMapping("getbyid/{id}")
     public ResponseEntity<User> getUserById(@PathVariable Long id) {
         try {
             User user = userService.getUserById(id);

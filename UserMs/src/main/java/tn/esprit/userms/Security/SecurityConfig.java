@@ -33,8 +33,8 @@ public class SecurityConfig {
                 .cors(Customizer.withDefaults())
                 .csrf(Customizer.withDefaults())
                 .authorizeHttpRequests((authorize) -> authorize
-                        .requestMatchers("user/hello_2").hasAuthority("realm-admin")
-                        .requestMatchers("user/client").hasAuthority("realm-user")
+                        .requestMatchers("/user/**").hasAuthority("realm-admin")
+                       // .requestMatchers("user/client").hasAuthority("realm-user")
                         .anyRequest().authenticated())
                // . headers(h->h.frameOptions(fo->fo.disable()))
                 .csrf(csrf->csrf.ignoringRequestMatchers("/h2-console/**"))

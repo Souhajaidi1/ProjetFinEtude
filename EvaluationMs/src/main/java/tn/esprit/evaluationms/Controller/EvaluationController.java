@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import tn.esprit.evaluationms.Client.Role;
 import tn.esprit.evaluationms.Entities.Interview;
 import tn.esprit.evaluationms.Services.IEvaluationService;
 import tn.esprit.evaluationms.Entities.Evaluation;
@@ -43,6 +44,14 @@ public class EvaluationController {
     public ResponseEntity<Interview> saveTest(@RequestBody Interview interview) {
         Interview createdInterview = evaluationService.saveTest(interview);
         return new ResponseEntity<>(createdInterview, HttpStatus.CREATED);
+    }
+    @PostMapping("/assign")
+    public ResponseEntity<Interview> assignEvaluatorsToInterview(
+            @RequestParam Role evaluatorRole,
+            @RequestParam Role candidateRole,
+            @RequestBody Interview interview) {
+        evaluationService.assignEvaluatorsToInterview(evaluatorRole, candidateRole, interview);
+        return new ResponseEntity<>(interview, HttpStatus.OK);
     }
 
     @GetMapping("/getidtest/{id}")

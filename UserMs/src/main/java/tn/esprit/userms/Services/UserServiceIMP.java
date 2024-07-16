@@ -21,7 +21,7 @@ public class UserServiceIMP implements IUserService {
     @Override
     public User registerUser(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword())); // Hash password
-        user.setRole(Role.USER); // Set default role (can be customized)
+        user.setRole(Role.CANDIDAT); // Set default role (can be customized)
         userRepo.save(user);
         return user;
     }
@@ -47,7 +47,13 @@ public class UserServiceIMP implements IUserService {
 
     @Override
     public List<User> getAllUsers() {
+
         return userRepo.findAll(); // Consider pagination for large datasets
+    }
+
+    @Override
+    public List<User> getUsersByRole(Role role){
+        return userRepo.findByRole(role);
     }
 
     @Override

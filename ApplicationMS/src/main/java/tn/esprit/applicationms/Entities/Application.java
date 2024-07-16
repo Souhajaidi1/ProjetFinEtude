@@ -26,6 +26,6 @@ public class Application implements Serializable {
     @Enumerated(EnumType.STRING)
     public Etat etat ;
     @Transient
-    private User user ;
+    private User user_candidat ;
 
 }

@@ -1,3 +1,5 @@
 
 v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ªîõË8¼×‘ğ‡2
-]	java:S125F"<This block of commented-out lines of code should be removed.(ü½Ì«ıÿÿÿÿ8Î×‘ğ‡2
+j
+java:S2259B"HA "NullPointerException" could be thrown; "interview1" is nullable here.(ˆĞÉ¦şÿÿÿÿ8ÅÊáßŠ2
+]	java:S125L"<This block of commented-out lines of code should be removed.(ü½Ì«ıÿÿÿÿ8Î×‘ğ‡2

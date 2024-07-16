@@ -1,6 +1,7 @@
 package tn.esprit.userms.Services;
 
 import org.apache.http.auth.InvalidCredentialsException;
+import tn.esprit.userms.entities.Role;
 import tn.esprit.userms.entities.User;
 
 import java.util.List;
@@ -13,6 +14,8 @@ public interface IUserService {
     void logoutUser(String username);
 
     List<User> getAllUsers();
+
+    List<User> getUsersByRole(Role role);
 
     User getUserById(Long id);
 

@@ -1,4 +1,5 @@
 package tn.esprit.evaluationms.Services;
+import tn.esprit.evaluationms.Client.Role;
 import tn.esprit.evaluationms.Entities.Evaluation;
 import tn.esprit.evaluationms.Entities.Interview;
 
@@ -11,6 +12,9 @@ public interface IEvaluationService {
     void deleteEvaluation(int id);
    // double calculateScore(Evaluation evaluation);
     Interview saveTest(Interview interview);
+
+    void assignEvaluatorsToInterview(Role evaluatorRole, Role candidateRole, Interview interview);
+
     Interview getTestById(int id);
     List<Interview> getAllTests();
 
