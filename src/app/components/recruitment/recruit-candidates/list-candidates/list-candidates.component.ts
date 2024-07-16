@@ -4,9 +4,8 @@ import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { Subscription } from 'rxjs';
 import { SearchFilterService } from 'app/services/shared/search-filter.service';
-import { MatDialog } from '@angular/material/dialog';
-import { RecruitOffersService } from 'app/services/recruitement/recruit-offers/recruit-offers.service';
 import { RecruitCandidatesService } from 'app/services/recruitement/recruit-candidates/recruit-candidates.service';
+import { MatDialog } from '@angular/material/dialog';
 
 export interface Candidate {
   refapplication: number;
@@ -22,17 +21,9 @@ export interface Candidate {
   styleUrls: ['./list-candidates.component.scss']
 })
 export class ListCandidatesComponent implements OnInit, OnDestroy {
-  candidates: Candidate[] = [
-    { refapplication: 123, score: 45, cv: 'Full-stack Developer', motivationletter: 'aaaa', dateApplication: new Date() },
-    { refapplication: 547, score: 60, cv: 'Content Marketing', motivationletter: 'qsdfgh', dateApplication: new Date() },
-    { refapplication: 123, score: 45, cv: 'Full-stack Developer', motivationletter: 'aaaa', dateApplication: new Date() },
-    { refapplication: 547, score: 60, cv: 'Content Marketing', motivationletter: 'qsdfgh', dateApplication: new Date() },
-    { refapplication: 123, score: 45, cv: 'Full-stack Developer', motivationletter: 'aaaa', dateApplication: new Date() },
-    { refapplication: 547, score: 60, cv: 'Content Marketing', motivationletter: 'qsdfgh', dateApplication: new Date() }
-  ];
-
+  candidates: Candidate[] = [];
   dataSource = new MatTableDataSource<Candidate>(this.candidates);
-  displayedColumns: string[] = ['refapplication', 'cv', 'motivationletter', 'dateApplication',  'score','action'];
+  displayedColumns: string[] = ['refapplication', 'cv', 'motivationletter', 'dateApplication','score', 'action'];
 
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -41,7 +32,8 @@ export class ListCandidatesComponent implements OnInit, OnDestroy {
 
   constructor(
     private searchFilterService: SearchFilterService,
-    private recruitCandidatesService: RecruitCandidatesService
+    private recruitCandidatesService: RecruitCandidatesService,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -81,13 +73,14 @@ export class ListCandidatesComponent implements OnInit, OnDestroy {
         case 'refapplication': return this.compare(a.refapplication, b.refapplication, isAsc);
         case 'cv': return this.compare(a.cv, b.cv, isAsc);
         case 'motivationletter': return this.compare(a.motivationletter, b.motivationletter, isAsc);
+        case 'dateApplication': return this.compare(a.dateApplication, b.dateApplication, isAsc);
         case 'score': return this.compare(a.score, b.score, isAsc);
         default: return 0;
       }
     });
   }
 
-  compare(a: string | number, b: string | number, isAsc: boolean): number {
+  compare(a: string | number | Date, b: string | number | Date, isAsc: boolean): number {
     return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
   }
 
@@ -117,3 +110,4 @@ export class ListCandidatesComponent implements OnInit, OnDestroy {
     // Your delete candidate logic here
   }
 }
+

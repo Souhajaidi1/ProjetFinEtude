@@ -2,14 +2,19 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatDialog } from '@angular/material/dialog';
+import { RecruitCalendarService } from 'app/services/recruitement/recruit-calendar/recruit-calendar.service';
+import { AddHRTestComponent } from 'app/components/recruitment/recruit-calendar/add-hrtest/add-hrtest.component';
 
-export interface Test {
-  id: string;
+
+export interface HRTest {
+  id: number;
   interviewdate: Date;
   hour: string;
   duration: string;
   type: string;
 }
+
 @Component({
   selector: 'app-test-list',
   templateUrl: './test-list.component.html',
@@ -17,33 +22,38 @@ export interface Test {
 })
 export class TestListComponent implements OnInit {
   displayedColumns: string[] = ['id', 'interviewdate', 'hour', 'duration', 'type', 'action'];
-  hrTests: MatTableDataSource<Test>;
-  techTests: MatTableDataSource<Test>;
+  hrTests: MatTableDataSource<HRTest> = new MatTableDataSource();
+  techTests: MatTableDataSource<HRTest> = new MatTableDataSource();
   showHRTests = true;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor() {
-    // Sample data for HR tests
-    const hrData: Test[] = [
-      { id: '1', interviewdate: new Date(2024, 6, 1), hour: '10:00', duration: '60m', type: 'HR' },
-      { id: '2', interviewdate: new Date(2024, 6, 2), hour: '11:00', duration: '45m', type: 'HR' },
-      { id: '3', interviewdate: new Date(2024, 6, 3), hour: '12:00', duration: '30m', type: 'HR' },
-      { id: '4', interviewdate: new Date(2024, 6, 4), hour: '13:00', duration: '90m', type: 'HR' },
-    ];
-    // Sample data for Technical tests
-    const techData: Test[] = [
-      { id: '1', interviewdate: new Date(2024, 6, 1), hour: '10:00', duration: '2h', type: 'Technical' },
-      { id: '2', interviewdate: new Date(2024, 6, 2), hour: '11:00', duration: '1h', type: 'Technical' },
-      { id: '3', interviewdate: new Date(2024, 6, 3), hour: '12:00', duration: '3h', type: 'Technical' },
-      { id: '4', interviewdate: new Date(2024, 6, 4), hour: '13:00', duration: '2h', type: 'Technical' },
-    ];
-    this.hrTests = new MatTableDataSource(hrData);
-    this.techTests = new MatTableDataSource(techData);
-  }
+  constructor(
+    private recruitService: RecruitCalendarService,
+    public dialog: MatDialog
+  ) {}
 
   ngOnInit() {
+    this.fetchAllTests();
+  }
+
+  fetchAllTests() {
+    this.recruitService.getAllTests().subscribe(
+      (tests: HRTest[]) => {
+        const hrData = tests.filter(test => test.type === 'HR');
+        const techData = tests.filter(test => test.type === 'Technical');
+        this.hrTests.data = hrData;
+        this.techTests.data = techData;
+        this.applyPaginationAndSort();
+      },
+      error => {
+        console.error('Error fetching all tests', error);
+      }
+    );
+  }
+
+  applyPaginationAndSort() {
     this.hrTests.paginator = this.paginator;
     this.hrTests.sort = this.sort;
     this.techTests.paginator = this.paginator;
@@ -52,7 +62,7 @@ export class TestListComponent implements OnInit {
 
   toggleMode(event: any): void {
     this.showHRTests = event.checked;
-    this.onSortData(); // Reapply sorting and pagination
+    this.applyPaginationAndSort(); // Reapply sorting and pagination
   }
 
   applyFilter(filterValue: string) {
@@ -73,28 +83,45 @@ export class TestListComponent implements OnInit {
     this.applyFilter('');
   }
 
-  onSortData() {
-    if (this.showHRTests) {
-      this.hrTests.sort = this.sort;
-    } else {
-      this.techTests.sort = this.sort;
-    }
+  editTest(test: HRTest) {
+    const dialogRef = this.dialog.open(AddHRTestComponent, {
+      width: '250px',
+      data: test
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.recruitService.updateTest(test.id, result).subscribe(
+          updatedTest => {
+            Object.assign(test, updatedTest);
+            this.refreshTable();
+          },
+          error => {
+            console.error('Error updating test', error);
+          }
+        );
+      }
+    });
   }
 
-  onPageChange() {
-    if (this.showHRTests) {
-      this.hrTests.paginator = this.paginator;
-    } else {
-      this.techTests.paginator = this.paginator;
-    }
+  deleteTest(test: HRTest) {
+    this.recruitService.deleteTest(test.id).subscribe(
+      () => {
+        if (this.showHRTests) {
+          this.hrTests.data = this.hrTests.data.filter(t => t.id !== test.id);
+        } else {
+          this.techTests.data = this.techTests.data.filter(t => t.id !== test.id);
+        }
+        this.refreshTable();
+      },
+      error => {
+        console.error('Error deleting test', error);
+      }
+    );
   }
 
-  editTest(test: Test) {
-    // Implement edit logic here
+  refreshTable() {
+    this.applyPaginationAndSort();
   }
-
-  deleteTest(test: Test) {
-    // Implement delete logic here
-  }
-
 }
+

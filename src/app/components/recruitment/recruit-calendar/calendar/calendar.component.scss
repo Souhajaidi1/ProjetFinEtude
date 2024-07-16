@@ -1,4 +1,4 @@
-$primary-color: #436eae;
+$primary-color: #1f56a9;
 $light-color: #f8f9fa;
 $dark-color: #343a40;
 $text-color: #495057;
@@ -7,7 +7,9 @@ $border-color: #dee2e6;
 * {
   box-sizing: border-box;
 }
-
+.important-date {
+  background-color: rgb(88, 125, 141);
+}
 .calendar {
   width: 1200px;
   background-color: #fff;

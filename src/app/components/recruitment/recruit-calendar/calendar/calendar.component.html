@@ -16,11 +16,12 @@
       <div class="day"
            *ngFor="let day of daysInMonth"
            [ngClass]="{'today': isToday(day)}"
-           (click)="openDialog(day)">
+           [class.important-date]="isImportantDate(day)"
+           (click)="openDialog(day)"
+           [matTooltip]="getTooltipContent(day)"
+           matTooltipPosition="below">
         {{ day }}
       </div>
     </div>
   </div>
 </div>
-
-

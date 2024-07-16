@@ -93,12 +93,11 @@
     <ng-container matColumnDef="action">
       <th mat-header-cell *matHeaderCellDef></th>
       <td mat-cell *matCellDef="let offer" >
-        <button class="btn btn-mini btn-primary m-r-5 ripple light" type="button"
-           matTooltip="Edit" (click)="OpenDialogEditOffer(offer)">
-          <em class="material-icons">edit</em>
+        <button mat-icon-button class="edit-button" (click)="OpenDialogEditOffer(offer)">
+          <mat-icon>edit</mat-icon>
         </button>
-        <button class="btn btn-mini btn-danger ripple light" type="button" matTooltip="Delete" (click)="deleteOffer(offer)">
-          <em class="material-icons">delete</em>
+        <button mat-icon-button class="delete-button" (click)="deleteOffer(offer)">
+          <mat-icon>delete</mat-icon>
         </button>
       </td>
     </ng-container>

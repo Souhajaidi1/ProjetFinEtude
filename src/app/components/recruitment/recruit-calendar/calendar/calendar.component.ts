@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AddTechnicalTestComponent } from '../add-technical-test/add-technical-test.component';
-import { AddHRTestComponent } from '../add-hrtest/add-hrtest.component';
+import { AddHRTestComponent, HRTest } from '../add-hrtest/add-hrtest.component';
 import { SelectInterviewTypeDialog } from './SelectInterviewTypeDialog';
+import { RecruitCalendarService } from 'app/services/recruitement/recruit-calendar/recruit-calendar.service';
+import { AuthServiceService } from 'app/services/AuthService/auth-service.service';
+
 @Component({
   selector: 'app-calendar',
   templateUrl: './calendar.component.html',
@@ -17,8 +20,19 @@ export class CalendarComponent implements OnInit {
   daysInMonth: number[] = [];
   otherMonthDays: number[] = [];
   today: Date = new Date();
+  events = {
+    // Mock data for events. Replace with actual event data.
+    '2024-07-08': ['Technical Test', 'HR Interview'],
+    // Add more events here...
+  };
+  importantDates: string[] = [];
+  @Output() newItemEvent = new EventEmitter();
 
-  constructor(public dialog: MatDialog) {
+  constructor(
+    public dialog: MatDialog,
+    private recruitservice: RecruitCalendarService,
+    private authService: AuthServiceService // Injectez AuthService si nécessaire
+  ) {
     const now = new Date();
     this.currentMonth = now.getMonth();
     this.currentYear = now.getFullYear();
@@ -26,6 +40,16 @@ export class CalendarComponent implements OnInit {
 
   ngOnInit(): void {
     this.renderCalendar();
+    this.loadImportantDates();
+  }
+
+  loadImportantDates(): void {
+    this.recruitservice.getAllTests().subscribe((tests: HRTest[]) => {
+      this.importantDates = tests.map(test => this.formatDate(new Date(test.interviewdate)));
+      this.renderCalendar();
+    }, error => {
+      console.error('Error loading tests:', error);
+    });
   }
 
   renderCalendar(): void {
@@ -61,6 +85,12 @@ export class CalendarComponent implements OnInit {
            this.currentYear === today.getFullYear();
   }
 
+  isImportantDate(day: number): boolean {
+    const date = new Date(this.currentYear, this.currentMonth, day);
+    const formattedDate = this.formatDate(date);
+    return this.importantDates.includes(formattedDate);
+  }
+
   openDialog(day: number): void {
     const date = new Date(this.currentYear, this.currentMonth, day);
     const dialogRef = this.dialog.open(SelectInterviewTypeDialog, {
@@ -82,4 +112,21 @@ export class CalendarComponent implements OnInit {
       }
     });
   }
+
+  getTooltipContent(day: number): string {
+    const date = new Date(this.currentYear, this.currentMonth, day);
+    const formattedDate = this.formatDate(date);
+    if (this.events[formattedDate]) {
+      return this.events[formattedDate].join(', ');
+    }
+    return '';
+  }
+
+  private formatDate(date: Date): string {
+    const year = date.getFullYear();
+    const month = ('0' + (date.getMonth() + 1)).slice(-2);
+    const day = ('0' + date.getDate()).slice(-2);
+    return `${year}-${month}-${day}`;
+  }
 }
+

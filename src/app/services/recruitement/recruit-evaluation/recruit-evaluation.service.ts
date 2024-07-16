@@ -4,6 +4,7 @@ import { Observable , throwError} from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { AuthServiceService } from 'app/services/AuthService/auth-service.service';
 import { Evaluation } from 'app/components/recruitment/recruit-evaluation/evaluation/evaluation.component';
+
 @Injectable({
   providedIn: 'root'
 })

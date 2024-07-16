@@ -60,13 +60,13 @@ export class EvaluationComponent implements OnInit {
     });
   }
 
-  updateScore(event: any, controlName: string, score: number): void {
-    if (event.target.checked) {
-      this.evaluationForm.controls[controlName].setValue(score);
-    } else {
-      this.evaluationForm.controls[controlName].setValue(null);
-    }
-  }
+  // updateScore(event: any, controlName: string, score: number): void {
+  //   if (event.target.checked) {
+  //     this.evaluationForm.controls[controlName].setValue(score);
+  //   } else {
+  //     this.evaluationForm.controls[controlName].setValue(null);
+  //   }
+  // }
 
   onSubmit(): void {
     if (this.evaluationForm.valid) {

@@ -3,23 +3,23 @@
 <div mat-dialog-content>
   <form [formGroup]="hrTest">
     <mat-form-field>
-      <input matInput formControlName="date" [matDatepicker]="picker" placeholder="Interview Date">
+      <input matInput formControlName="interviewdate" [matDatepicker]="picker" placeholder="Interview Date" [(ngModel)]="interviewdate">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput formControlName="Hour" placeholder="Hour" type="time">
+      <input matInput formControlName="hour" placeholder="Hour" type="time" [(ngModel)]="hour">
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput formControlName="duration" placeholder="Duration" type="number">
+      <input matInput formControlName="duration" placeholder="duration" type="number" [(ngModel)]="duration">
     </mat-form-field>
 
     <mat-form-field>
-      <mat-select formControlName="type" placeholder="Type">
+      <mat-select formControlName="type" placeholder="Type" [(ngModel)]="modality">
         <mat-option value="online">Online</mat-option>
-        <mat-option value="in-person">In Person</mat-option>
+        <mat-option value="in-person">On site</mat-option>
       </mat-select>
     </mat-form-field>
   </form>

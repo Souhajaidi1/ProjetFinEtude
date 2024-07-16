@@ -13,50 +13,46 @@
         </thead>
         <tbody>
           <!-- Soft Skills Section -->
-          <tr *ngFor="let question of softSkillsQuestions">
-            <td>Soft Skill</td>
-            <td>{{ question.text }}</td>
-            <td>
-              <div class="radio-options">
-                <div *ngFor="let score of scores" class="form-check-inline">
-                  <input
-                    type="radio"
-                    class="form-check-input"
-                    [id]="'softQuestion' + question.id + 'score' + score"
-                    [formControlName]="question.controlName"
-                    [value]="score"
-                  />
-                  <label class="form-check-label" [for]="'softQuestion' + question.id + 'score' + score">{{ score }}</label>
-                </div>
-              </div>
-            </td>
-            <td>
-              <input type="text" class="form-control" [formControlName]="'remark' + question.id" />
-            </td>
-          </tr>
+          <ng-container *ngFor="let question of softSkillsQuestions; let i = index">
+            <tr>
+              <td class="competence-cell soft-skill-cell" [class.first-row]="i === 0" [class.last-row]="i === softSkillsQuestions.length - 1">Soft Skill</td>
+              <td>{{ question.text }}</td>
+              <td>
+                <input
+                  type="range"
+                  class="form-range"
+                  min="1"
+                  max="5"
+                  [formControlName]="question.controlName"
+                />
+                <span>{{ evaluationForm.controls[question.controlName].value }}</span>
+              </td>
+              <td>
+                <input type="text" class="form-control" [formControlName]="'remark' + question.id" />
+              </td>
+            </tr>
+          </ng-container>
 
           <!-- Hard Skills Section -->
-          <tr *ngFor="let question of hardSkillsQuestions">
-            <td>Hard Skill</td>
-            <td>{{ question.text }}</td>
-            <td>
-              <div class="radio-options">
-                <div *ngFor="let score of scores" class="form-check-inline">
-                  <input
-                    type="radio"
-                    class="form-check-input"
-                    [id]="'hardQuestion' + question.id + 'score' + score"
-                    [formControlName]="question.controlName"
-                    [value]="score"
-                  />
-                  <label class="form-check-label" [for]="'hardQuestion' + question.id + 'score' + score">{{ score }}</label>
-                </div>
-              </div>
-            </td>
-            <td>
-              <input type="text" class="form-control" [formControlName]="'remark' + question.id" />
-            </td>
-          </tr>
+          <ng-container *ngFor="let question of hardSkillsQuestions; let i = index">
+            <tr>
+              <td class="competence-cell hard-skill-cell" [class.first-row]="i === 0" [class.last-row]="i === hardSkillsQuestions.length - 1">Hard Skill</td>
+              <td>{{ question.text }}</td>
+              <td>
+                <input
+                  type="range"
+                  class="form-range"
+                  min="1"
+                  max="5"
+                  [formControlName]="question.controlName"
+                />
+                <span>{{ evaluationForm.controls[question.controlName].value }}</span>
+              </td>
+              <td>
+                <input type="text" class="form-control" [formControlName]="'remark' + question.id" />
+              </td>
+            </tr>
+          </ng-container>
         </tbody>
       </table>
     </div>
@@ -67,3 +63,4 @@
     </div>
   </form>
 </div>
+
